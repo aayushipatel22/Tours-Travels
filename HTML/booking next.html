@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Page</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="booking-form-container">
+    <h2>Choose Your Transport Mode</h2>
+    <form class="booking-form" id="bookingForm">
+
+      <div class="form-group">
+        <label for="selectmode">Book Tickets</label>
+        <select id="selectmode" name="selectmode">
+          <option value="Select mode">Select Mode</option>
+          <option value="Aeroplane">Aeroplane</option>
+          <option value="Trains">Trains</option>
+          <option value="Buses">Buses</option>
+          <option value="Boats">Boats</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="submit-button"><a href="booking.html">Previous</a></button>
+        <button type="submit" class="submit-button">Submit</button>
+        <button type="submit" class="submit-button"><a href="booking next.html">Next</a></button>
+      </div>
+    </form>
+
+    <div id="aeroplaneDetails" class="mode-details" style="display: none;">
+      <!-- Aeroplane details will be displayed here -->
+      <h3>Aeroplane Details</h3>
+      <div class="container">
+        <div class="booking-form-container">
+          <h2>Aeroplane Ticket Booking</h2>
+          <form class="booking-form" id="aeroplaneForm">
+
+            <div class="form-group">
+              <label for="destination">Destination:</label>
+              <input type="text" id="destination" name="destination" placeholder="Enter Destination">
+            </div>
+
+            <div class="form-group">
+              <label for="departureDate">Departure Date:</label>
+              <input type="date" id="departureDate" name="departureDate">
+            </div>
+
+            <div class="form-group">
+              <label for="returnDate">Return Date:</label>
+              <input type="date" id="returnDate" name="returnDate">
+            </div>
+
+            <div class="form-group">
+              <label for="adults">Adults (12yrs & above):</label>
+              <select id="adults" name="adults">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="children">Children (2-12 yrs):</label>
+              <select id="children" name="children">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="infants">Infants (under 2yrs):</label>
+              <select id="infants" name="infants">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="cabinClass">Cabin Class:</label>
+              <select id="cabinClass" name="cabinClass">
+                <option value="Economy">Economy</option>
+                <option value="Business">Business</option>
+                <option value="First">First Class</option>
+              </select>
+            </div>
+
+            <div class="button-group">
+              <!-- <button type="submit" class="submit-button" style="text-align: center;">Book Now</button> -->
+              <a href="done.html" class="submit-button">Book Now</a>
+              <!-- <a href="Hotel.html" class="submit-button">Hotels</a> -->
+            </div>
+          </form>
+
+          <div id="aeroplaneTicketDetails" class="mode-details">
+            <!-- Aeroplane ticket details will be displayed here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("bookingForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the selected mode
+    var selectedMode = document.getElementById("selectmode").value;
+
+    // Show the details of the selected mode
+    document.querySelectorAll(".mode-details").forEach(function(mode) {
+      mode.style.display = "none"; // Hide all mode details
+    });
+
+    // Show the details of the selected mode
+    document.getElementById(selectedMode.toLowerCase() + "Details").style.display = "block";
+  });
+
+  document.getElementById("aeroplaneForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the form data
+    var destination = document.getElementById("destination").value;
+    var departureDate = document.getElementById("departureDate").value;
+    var returnDate = document.getElementById("returnDate").value;
+    var adults = document.getElementById("adults").value;
+    var children = document.getElementById("children").value;
+    var infants = document.getElementById("infants").value;
+    var cabinClass = document.getElementById("cabinClass").value;
+
+    // Display the submitted data
+    var aeroplaneTicketDetails = document.getElementById("aeroplaneTicketDetails");
+    aeroplaneTicketDetails.innerHTML = "<h3>Aeroplane Ticket Details</h3>" +
+                                  "<p><strong>Destination:</strong> " + destination + "</p>" +
+                                  "<p><strong>Departure Date:</strong> " + departureDate + "</p>" +
+                                  "<p><strong>Return Date:</strong> " + returnDate + "</p>" +
+                                  "<p><strong>Total Persons:</strong> " + adults + " Adult(s), " + children + " Child(ren), " + infants + " Infant(s)</p>" +
+                                  "<p><strong>Cabin Class:</strong> " + cabinClass + "</p>";
+                        });
+
+  // display the submitted data 
+  var aeroplaneTicketDetails = document.getElementById("aeroplaneTicketDetails");
+
+</script>
+
+</body>
+</html>

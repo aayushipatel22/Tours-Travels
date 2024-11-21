@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,600,700,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Tours</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #f3c9c9;
+      color: #822b2b;
+      font-size: 2rem;
+      font-style: italic;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .search_container {
+      margin-bottom: 20px;
+    }
+
+    #search_input {
+      padding: 8px;
+      width: 200px;
+      margin-right: 10px;
+    }
+
+    #search_button {
+      padding: 8px 20px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    #search_button:hover {
+      background-color: #45a049;
+    }
+
+    .places-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .place {
+      margin: 10px;
+      text-align: center;
+    }
+
+    .place img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .place h2 {
+      margin-top: 10px;
+      font-size: 18px;
+
+    }
+
+
+    .popular-tours {
+      padding: 5rem 0 10rem 0;
+    }
+
+    .popular-tours-heading {
+      font-size: 4rem;
+      font-style: italic;
+      text-align: center;
+      margin-bottom: 8rem;
+      background-color: #f3c9c9;
+      color: #822b2b;
+      padding: 20px;
+
+    }
+
+    .cards-wrapper {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .card {
+      width: 35rem;
+      position: relative;
+      perspective: 150rem;
+    }
+
+    .card-image {
+      width: 100%;
+      border-radius: 0.3rem 0.3rem 0 0;
+    }
+
+    .front-side {
+      text-align: center;
+      background-color: var(--white-color);
+      border-radius: 0.3rem;
+      position: relative;
+      z-index: 10;
+      opacity: 0.9;
+      transition: opacity 0.4s, transform 0.4s, box-shadow 0.4s;
+    }
+
+    .change>.front-side {
+      transform: translateZ(-5rem) translateX(3rem);
+      box-shadow: 0 2rem 4rem #777;
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .tour-name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      position: absolute;
+      top: 30%;
+      right: 1.5rem;
+      color: var(--white-color);
+      text-shadow: 0 0 1rem #000;
+    }
+
+    .card-list {
+      width: 80%;
+      margin: auto;
+      padding: 2rem 0 3rem 0;
+    }
+
+    .card-list-item {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--light-grey-color);
+      margin: 2rem 0;
+      border-bottom: 0.1rem solid var(--primary-color);
+      padding-bottom: 1.5rem;
+    }
+
+    .back-side {
+      position: absolute;
+      top: 0;
+      background-color: var(--primary-color);
+      width: 100%;
+      height: 100%;
+      border-radius: 0.3rem;
+      box-shadow: 0 2rem 4rem #777;
+      flex-direction: column;
+      transform: translateZ(-5rem) translateX(3rem);
+      opacity: 0.5;
+      transition: opacity 0.4s, transform 0.4s, box-shadow 0.4s;
+    }
+
+    .change>.back-side {
+      transform: translateZ(0) translateX(0);
+      box-shadow: 0 0.5rem 2rem #aaa;
+      opacity: 0.9;
+    }
+
+    .tour-price {
+      font-size: 5rem;
+      font-weight: 300;
+      color: var(--white-color);
+      margin-bottom: 3rem;
+    }
+
+    .card-button {
+      color: var(--primary-color);
+      background-color: var(--white-color);
+      border: none;
+      font-size: 2.5rem;
+      padding: 1rem 2rem;
+      letter-spacing: 0.2rem;
+      border-radius: 5rem;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      /*extra*/
+    }
+
+    .card-button:hover {
+      background-color: var(--primary-color-dark);
+    }
+
+    .navigation-button {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      padding: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: var(--light-grey-color);
+      border-radius: 0.3rem;
+      border: none;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container"></div>
+  <header>
+    <h1>Select Your Destination </h1>
+
+  </header>
+
+  <main>
+    <section class="places-container">
+      <div class="place">
+        <a href="keral.html">
+          <img src="images/keral.jpg" alt="Place 1">
+        </a>
+        <h2>Kerala</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/kutch.jpg" alt="Place 2">
+        <h2>Kutch</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/jaipur.jpg" alt="Place 3">
+        <h2>Jaipur</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/Hyderabad's-Charminar.jpg" alt="Place 3">
+        <h2>Charminar</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/kashmir.jpg" alt="Place 3">
+        <h2>Kashmir</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/tajmahal.jpg" alt="Place 3">
+        <h2>Tajmahal</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/Gwalior Fort, Madhya Pradesh.jpg" alt="Place 3">
+        <h2>Gwalior Fort</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/Jallianwala Bagh, Punjab.jpg" alt="Place 3">
+        <h2>Jalliwala Bagh</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/Mehrangarh Fort, Jodhpur.jpg" alt="Place 3">
+        <h2>Mehrangarh Fort</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/Victoria Memorial, Kolkata.jpg" alt="Place 3">
+        <h2>Victoria Memorialt</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/Ajanta and Ellora Caves, Maharashtra.jpg" alt="Place 3">
+        <h2>Ajanta and Ellora Caves</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/goa.jpg" alt="Place 3">
+        <h2>Goa</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/kovalam.jpg" alt="Place 3">
+        <h2>Kovalam Beach</h2>
+      </div>
+
+      <div class="place">
+        <img src="images/puducherry.jpg" alt="Place 3">
+        <h2>Puducherry</h2>
+      </div>
+    </section>
+  </main>
+
+
+
+
+
+  <!-- Popular tours -->
+  <section class="popular-tours">
+    <h1 class="popular-tours-heading">The Most Popular Tours</h1>
+    <div class="cards-wrapper">
+
+
+      <div class="card">
+        <div class="front-side">
+          <img src="images/forest.jpg" alt="Forest" class="card-image" />
+          <h1 class="tour-name">The wild forest</h1>
+          <ul class="card-list">
+            <li class="card-list-item">7 days tour</li>
+            <li class="card-list-item">Up to 20 people</li>
+            <li class="card-list-item">4 tour guides</li>
+            <li class="card-list-item">Sleep in private tents</li>
+            <li class="card-list-item">Difficulty: medium</li>
+          </ul>
+          <button class="navigation-button">
+            price &gt;&gt;
+          </button>
+        </div>
+        <div class="back-side center">
+          <button class="navigation-button">
+            &lt;&lt; back
+          </button>
+          <h3 class="tour-price">$399</h3>
+          <button class="card-button">Booking</button>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="front-side">
+          <img src="images/river.jpg" alt="River" class="card-image" />
+          <h1 class="tour-name">Along the river</h1>
+          <ul class="card-list">
+            <li class="card-list-item">9 days tour</li>
+            <li class="card-list-item">Up to 30 people</li>
+            <li class="card-list-item">7 tour guides</li>
+            <li class="card-list-item">Sleep in private tents</li>
+            <li class="card-list-item">Difficulty: hard</li>
+          </ul>
+          <button class="navigation-button">
+            price &gt;&gt;
+          </button>
+        </div>
+        <div class="back-side center">
+          <button class="navigation-button">
+            &lt;&lt; back
+          </button>
+          <h3 class="tour-price">$499</h3>
+          <button class="card-button">Booking</button>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="front-side">
+          <img src="images/sea.jpg" alt="Sea" class="card-image" />
+          <h1 class="tour-name">The island beach</h1>
+          <ul class="card-list">
+            <li class="card-list-item">5 days tour</li>
+            <li class="card-list-item">Up to 40 people</li>
+            <li class="card-list-item">8 tour guides</li>
+            <li class="card-list-item">Sleep in hotel</li>
+            <li class="card-list-item">Difficulty: easy</li>
+          </ul>
+          <button class="navigation-button">
+            price &gt;&gt;
+          </button>
+        </div>
+        <div class="back-side center">
+          <button class="navigation-button">
+            &lt;&lt; back
+          </button>
+          <h3 class="tour-price">$599</h3>
+          <button class="card-button">Booking</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End of Popular tours -->
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
