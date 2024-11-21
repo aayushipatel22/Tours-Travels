@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .container {
+        margin-bottom: 20px; 
+        background-color: #f3c9c9;
+        color: #822b2b;
+        font-size: 24px; /* Adjust the font size */
+        font-style: oblique;
+        font-weight: bold; /* Make the heading bold */
+        text-align: center; /* Align the heading to the center */
+        margin-bottom: 20px; /* Add some bottom margin */
+    
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.submit-button:hover {
+    background-color: #0056b3;
+  }
+  
